@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ImageUpload.Models.ImageInfo>
+<h2>Images</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>View File</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var image in Model)
+                {
+                    <tr>
+                        <td>@image.Id</td>
+                        <td><a href="/Image/@image.FileName">View File</a></td>
+                        <td>@image.FilePath</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Image", new { id = image.Id })" class="btn btn-primary">Edit</a>
+                            <a href="@Url.Action("Delete", "Image", new { id = image.Id })" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
